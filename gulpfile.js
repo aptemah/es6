@@ -97,7 +97,7 @@
 		}
 
 		function jsTask(){
-			gulp.src('src/js/**')
+			gulp.src(['src/js/**', './node_modules/babel-polyfill/dist/polyfill.js'])
 				.pipe(order([
 					'vendor/*js'
 				]))
@@ -105,9 +105,9 @@
 				.pipe(babel({
 					presets: ['es2015']
 				}))
-				.pipe(uglify().on('error', function(e){
-					console.log(e);
-				}))
+				//.pipe(uglify().on('error', function(e){
+				//	console.log(e);
+				//}))
 				.pipe(gulp.dest(paths.build.js));
 		}
 
